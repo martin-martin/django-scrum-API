@@ -35,8 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.staticfiles',
     # third-party apps
-    'rest-framework',
-    'rest-framework.authtoken',
+    'rest_framework',
+    'rest_framework.authtoken',
     # internal apps
     'board',
 ]
