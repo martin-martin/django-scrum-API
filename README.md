@@ -12,3 +12,15 @@ Tasks will have a couple of different states:
 * In Progress
 * Testing
 * Done
+
+## API Design
+
+```py
+/api/
+    /sprints/
+        /<id>/
+    /tasks/
+        /<id>/
+    /users/
+        /<username>/
+```
