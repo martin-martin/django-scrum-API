@@ -5,4 +5,10 @@
 * different 'states' can track the progress of a task
 * the preceding tasks have to be part of a taskf for it to become 'completed'
 
+## Tasks
+Tasks will have a couple of different states:
 
+* Not Started
+* In Progress
+* Testing
+* Done
