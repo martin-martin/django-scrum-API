@@ -3,6 +3,7 @@ from rest_framework import authentication, permissions, viewsets, filters
 # changed in release 3.7.0 - import DjangoFilterBackend separately:
 # https://github.com/encode/django-rest-framework/blob/22565d9a652fe45239c1480fd0acfc0d06ddda65/docs/topics/release-notes.md'
 from django_filters.rest_framework import DjangoFilterBackend
+from .forms import TaskFilter
 from .models import Sprint, Task
 from .serializers import SprintSerializer, TaskSerializer, UserSerializer
 
@@ -49,6 +50,7 @@ class TaskViewSet(DefaultsMixin, viewsets.ModelViewSet):
 
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
+    filter_class = TaskFilter
     search_fields = ('name', 'description', )
     ordering_fields = ('name', 'order', 'started', 'due', 'completed', )
 
