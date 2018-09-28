@@ -11,7 +11,7 @@ class NullFilter(django_filters.BooleanFilter):
         return qs
 
 
-class TaskFilter(django_filters.FitlerSet):
+class TaskFilter(django_filters.FilterSet):
 
     class Meta:
         model = Task
