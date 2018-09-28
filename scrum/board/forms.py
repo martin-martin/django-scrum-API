@@ -13,6 +13,8 @@ class NullFilter(django_filters.BooleanFilter):
 
 class TaskFilter(django_filters.FilterSet):
 
+    backlog = NullFilter(name='sprint')
+
     class Meta:
         model = Task
         fields = ('sprint', 'status', 'assigned', )
