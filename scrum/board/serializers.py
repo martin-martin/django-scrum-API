@@ -1,4 +1,6 @@
+from datetime import date
 from django.contrib.auth import get_user_model
+from django.utils.translation import ugettext_lazy as _
 from rest_framework import serializers
 from rest_framework.reverse import reverse
 from .models import Sprint, Task
@@ -45,6 +47,16 @@ class SprintSerializer(serializers.ModelSerializer):
                             kwargs={'pk': obj.pk}, request=request),
             'tasks': reverse('task-list', request=request) + f'?sprint={obj.pk}',
         }
+
+    # update to DRF 3.x
+    # https://github.com/djangopractice/scrum/blob/17c3b8b2850aa7d8aa1d3fecd38f0b654dfa2744/board/serializers.py
+    def validate_end(self, value):
+        new = self.instance is None
+        updated = not new and self.initial_data['end'] != self.instance.end
+        if (new or updated) and value < date.today():
+            msg = _('End date cannot be in the past.')
+            raise serializers.ValidationError(msg)
+        return value
 
 
 class TaskSerializer(serializers.ModelSerializer):
